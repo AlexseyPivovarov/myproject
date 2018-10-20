@@ -20,8 +20,9 @@ from . import views
 
 
 urlpatterns = [
-    # path('', views.base, name='base'),
-    path('', views.HomeView.as_view(), name='base'),
+    path('', views.home, name='home'),
+    path('<int:pid>', views.category_list, name='category'),
+    path('all/', views.all_list, name='all')
 ]
 
 
