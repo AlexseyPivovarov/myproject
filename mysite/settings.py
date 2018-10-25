@@ -25,7 +25,7 @@ SECRET_KEY = 'l=3!890wf3%r2_pt3m!$m-es1n72#@ino_*t@$5lly4&mcbavz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'core.apps.CoreConfig',
 ]
 
@@ -119,7 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 # STATIC_ROOT = BASE_DIR
+STATIC_ROOT = ""
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static/"),
+    STATIC_ROOT,
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'sign-in'

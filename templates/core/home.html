@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}LIST{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+{% for item in product %}
+  <div class="col col-md-6 col-lg-4 col-xl-3 mt-5">
+    <div class="card">
+        <div class="card-header">
+            <div class="text-right">
+                <p1>{{ item.product_datatime_creation }}</p1>
+            </div>
+        <h1>{{ item.product_name }}</h1>
+        </div>
+      <div class="card-body">
+          <div class="text-right">
+              {{ item.product_category.category_name }}
+          </div>
+          <p>{{ item.product_info }}</p>
+        <!--<button type="button" class="btn" onClick='location.href="#"'>-->
+            <!--More-->
+        <!--</button>-->
+      </div>
+        <img src="{{ item.product_image.url }}" alt="..." onclick='location.href="#"' height="250">
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if product.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ product.number }} of {{ product.paginator.num_pages }}.
+        </span>
+
+        {% if product.has_next %}
+            <a href="?page={{ product.next_page_number }}">next</a>
+            <a href="?page={{ product.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

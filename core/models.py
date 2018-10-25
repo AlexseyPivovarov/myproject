@@ -37,7 +37,7 @@ class Product(models.Model):
         (VIP, 'Want VIP')
     )
 
-    product_category = models.ForeignKey('Category', on_delete=models.DO_NOTHING, verbose_name=u'category')
+    product_category = models.ForeignKey('Category', on_delete=models.DO_NOTHING, verbose_name=u'category', related_name='product')
     product_name = models.CharField(max_length=20, blank=False, verbose_name=u'name')
     product_image = models.ImageField(verbose_name=u'foto', default='images/No-image.jpg')
     product_info = models.TextField(verbose_name=u'info')
