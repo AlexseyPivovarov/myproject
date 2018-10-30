@@ -11,10 +11,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = ['product_category', 'product_name', 'product_image',
+    fields = ['product_user', 'product_category', 'product_name', 'product_image',
               'product_info', 'product_price', 'product_status', 'product_vip',
               'product_vip_moderation']
-    list_display = ('product_name', 'product_category', 'product_image',
+    list_display = ('product_user', 'product_name', 'product_category', 'product_image',
                     'product_price', 'product_status', 'product_vip', 'product_vip_moderation',
                     'product_datatime_creation')
     list_filter = ('product_status', 'product_vip_moderation')

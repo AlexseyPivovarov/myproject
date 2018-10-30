@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -37,6 +38,7 @@ class Product(models.Model):
         (VIP, 'Want VIP')
     )
 
+    product_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=u'user', default='')
     product_category = models.ForeignKey('Category', on_delete=models.DO_NOTHING, verbose_name=u'category', related_name='product')
     product_name = models.CharField(max_length=20, blank=False, verbose_name=u'name')
     product_image = models.ImageField(verbose_name=u'foto', default='images/No-image.jpg')

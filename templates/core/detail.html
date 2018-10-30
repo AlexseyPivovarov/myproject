@@ -7,31 +7,27 @@
 {% block content %}
 
 <div class="container">
-<div class="row">
-  <div class="col col-12 mt-5">
-    <div class="card">
-        <div class="card-header">
-            <div class="text-right">
-                <p1>{{ product.product_datatime_creation }}</p1>
+    <div class="row">
+        <div class="col col-12 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-right">
+                        <p1>{{ product.product_datatime_creation }}</p1>
+                    </div>
+                    <h1>{{ product.product_name }}</h1>
+                </div>
+                <div class="card-body">
+                    <div class="text-right">
+                        {{ product.product_category.category_name }}
+                    </div>
+                    <p>{{ product.product_info }}</p>
+                    <div class="row justify-content-center">
+                        <img src="{{ product.product_image.url }}" alt="..." style="max-width: 100%;">
+                    </div>
+                </div>
             </div>
-        <h1>{{ product.product_name }}</h1>
         </div>
-      <div class="card-body">
-          <div class="text-right">
-              {{ product.product_category.category_name }}
-          </div>
-          <p>{{ product.product_info }}</p>
-        <!--<button type="button" class="btn" onClick='location.href="#"'>-->
-            <!--More-->
-        <!--</button>-->
-      </div>
-        <div class="row justify-content-center">
-            <img src="{{ product.product_image.url }}" alt="...">
-        </div>
-
     </div>
-  </div>
-</div>
 </div>
 
 

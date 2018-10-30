@@ -73,3 +73,13 @@ def profile(request):
             return HttpResponseRedirect('/')
     return render(request, 'profile.html', {'form': form})
 
+
+@login_required
+def my_product(request):
+    context = {}
+    context['category'] = Category.objects.all()
+    paginator = Paginator(Product.objects.filter(
+                product_user__id=request.user.id).order_by('-product_datatime_creation').all(), 4)
+    context['product'] = paginator.get_page(request.GET.get('page'))
+    return render(request, template_name='core/home.html', context=context)
+
