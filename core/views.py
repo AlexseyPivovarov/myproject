@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import Profile
+from .forms import Profile, ProductForm
 
 
 # create your views here.
@@ -82,4 +82,11 @@ def my_product(request):
                 product_user__id=request.user.id).order_by('-product_datatime_creation').all(), 4)
     context['product'] = paginator.get_page(request.GET.get('page'))
     return render(request, template_name='core/home.html', context=context)
+
+
+@login_required
+def add_product(request):
+    context = {}
+    context['form'] = ProductForm
+    return render(request, template_name='core/add.html', context=context)
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+
+{% block title %}Add{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col col-12 mt-5">
+            <div class="card">
+                {% csrf_token %}
+                <div class="card-header">
+                    <h2>Добавление обьявления</h2>
+                </div>
+                <div class="card-body">
+                    {% bootstrap_form form layout='inline' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
