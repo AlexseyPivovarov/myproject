@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('<int:pid>', views.category_list, name='category'),
     path('all/', views.all_list, name='all'),
+    path('detail/<int:pid>', views.detail, name='detail'),
 
     path('sign-in/', LoginView.as_view(template_name='login.html'), name='sign-in'),
     path('sign-up', views.sign_up, name='sign-up'),
@@ -32,7 +33,7 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
 
     path('change-password', PasswordChangeView.as_view(template_name='change-password.html'), name='change-password'),
-    path('change-password-done', PasswordChangeDoneView.as_view(template_name='change-password.html'), name='password_change_done'),
+    path('change-password-done', PasswordChangeDoneView.as_view(template_name='done-password.html'), name='password_change_done'),
 ]
 
 

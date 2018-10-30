@@ -40,6 +40,13 @@ def all_list(request):
     return render(request, template_name='core/home.html', context=context)
 
 
+def detail(request, pid):
+    context = {}
+    context['category'] = Category.objects.all()
+    context['product'] = Product.objects.get(id=pid)
+    return render(request, template_name='core/detail.html', context=context)
+
+
 def sign_up(request):
     get_form = UserCreationForm()
     if request.method == 'POST':
@@ -51,7 +58,8 @@ def sign_up(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return HttpResponseRedirect('/')
-    return render(request, 'registration.html', {'reg_form': get_form})
+    else:
+        return render(request, 'registration.html', {'reg_form': get_form})
 
 
 @login_required

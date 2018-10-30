@@ -1,0 +1,29 @@
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center col-m4 logo">
+                        {{form_name}}
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" class='form'>
+                        {% csrf_token %}
+                        {% bootstrap_form abc_var_form layout='inline' %}
+                        <div class="row justify-content-end">
+                            {% buttons %}
+                            <button type="submit" class="btn btn-primary btn-custom mr-3">
+                                {{button_name}}
+                            </button>
+                            {% endbuttons %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

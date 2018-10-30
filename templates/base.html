@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
 <body>
-        {% include 'header.html' %}
+{% include 'header.html' %}
 
+{% block sidebar %}
 <div class="container-fluid h-100">
     <div class="row d-flex flex-row">
         <aside class="col-1 col-md-2 col-lg-12 h-md-100 p-0 bg-dark top">
@@ -32,7 +33,7 @@
             </nav>
         </aside>
         <main class="col-11 col-md-10 col-lg-12 bg-faded py-2">
-
+            {% endblock %}
             {% block content %}{% endblock %}
 
         </main>

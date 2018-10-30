@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+
+{% block sidebar %}{% endblock %}
+{% block content %}
+
+{% include 'include/abc_form.html' with abc_var_form=reg_form form_name="Sign-up" button_name="Зарегистрироватся"%}
+
+{% endblock %}
