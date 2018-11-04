@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 
@@ -11,28 +11,28 @@ class HomeView(ListViewMixin, View):
     template_name = 'core/home.html'
 
     def get(self, request):
-        return super().get(request=request, my_filter={'product_vip': 1})
+        return super().get(request=request, product_vip=1)
 
 
 class CategoryListView(ListViewMixin, View):
     template_name = 'core/home.html'
 
     def get(self, request, pid):
-        return super().get(request=request, my_filter={'product_category__id': pid})
+        return super().get(request=request, product_category__id=pid)
 
 
 class MyProductView(ListViewMixin, View):
     template_name = 'core/home.html'
 
     def get(self, request):
-        return super().get(request=request, my_filter={'product_user__id': request.user.id})
+        return super().get(request=request, product_user__id=request.user.id)
 
 
 class AllListView(ListViewMixin, View):
     template_name = 'core/home.html'
 
     def get(self, request):
-        return super().get(request=request, my_filter={})
+        return super().get(request=request)
 
 
 class MyDetailView(View):
@@ -40,7 +40,7 @@ class MyDetailView(View):
     def get(self, request, pid):
         context = {}
         context['category'] = Category.objects.all()
-        context['product'] = Product.objects.get(id=pid)
+        context['product'] = get_object_or_404(Product, id=pid)
         return render(request, template_name='core/detail.html', context=context)
 
 
