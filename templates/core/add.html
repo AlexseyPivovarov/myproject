@@ -16,15 +16,17 @@
                     <h2>Добавление обьявления</h2>
                 </div>
                 <div class="card-body">
+                    <form action="{% url 'add' %}" method="post">
                     {% csrf_token %}
                     {% bootstrap_form form layout='inline' %}
                     <div class="row justify-content-end mr-0">
-                        {% buttons %}
+                        <!--{% buttons %}-->
                             <button type="submit" class="btn btn-primary btn-custom">
                                 Сохранить
                             </button>
-                        {% endbuttons %}
+                        <!--{% endbuttons %}-->
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

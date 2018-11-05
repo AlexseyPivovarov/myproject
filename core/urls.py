@@ -6,11 +6,11 @@ from . import views
 urlpatterns = [
     path('auth/', include('core.authurls')),
     path('', views.HomeView.as_view(), name='home'),
-    path('<int:pid>', views.CategoryListView.as_view(), name='category'),
     path('all/', views.AllListView.as_view(), name='all'),
-    path('detail/<int:pid>', views.MyDetailView.as_view(), name='detail'),
     path('myproduct/', login_required(views.MyProductView.as_view()), name='my_products'),
-    path('add/', views.add_product, name='add'),
+    path('add/', views.login_required(views.AddProduct.as_view()), name='add'),
+    path('detail/<int:pid>', views.MyDetailView.as_view(), name='detail'),
+    path('<int:pid>', views.CategoryListView.as_view(), name='category'),
 
 ]
 

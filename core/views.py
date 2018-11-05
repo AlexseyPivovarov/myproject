@@ -44,14 +44,24 @@ class MyDetailView(View):
         return render(request, template_name='core/detail.html', context=context)
 
 
-@login_required
-def add_product(request):
-    user = request.user
-    form = ProductForm(instance=user)
-    if request.method == 'POST':
-        form = ProductForm(request.POST, instance=request.user)
+# @login_required
+# def add_product(request):
+#     user = request.user
+#     form = ProductForm(instance=user)
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, instance=request.user)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('/')
+#     return render(request, 'core/add.html', {'form': form})
+class AddProduct(View):
+
+    def get(self, request):
+        return render(request, 'core/add.html', {'form': ProductForm()})
+
+    def post(self, request):
+        form = ProductForm(request.POST, instance=Product(product_user=request.user))
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
-    return render(request, 'core/add.html', {'form': form})
 

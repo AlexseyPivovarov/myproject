@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from .models import Product
 
 
@@ -10,6 +10,7 @@ class Profile(ModelForm):
 
 
 class ProductForm(ModelForm):
+
     class Meta:
         model = Product
         fields = ('product_name', 'product_category', 'product_info',
