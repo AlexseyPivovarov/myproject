@@ -50,10 +50,10 @@ class AddProduct(View):
         return render(request, 'core/add.html', {'form': ProductForm()})
 
     def post(self, request):
-        form = ProductForm(request.POST, instance=Product(product_user=request.user))
+        form = ProductForm(request.POST, files=request.FILES, instance=Product(product_user=request.user))
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('../myproduct/')
         return render(request, 'core/add.html', {'form': form})
 
 
