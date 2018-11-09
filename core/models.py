@@ -34,7 +34,7 @@ class Product(models.Model):
     )
 
     VIP_MODER = (
-        (STANDART, 'OK'),
+        (STANDART, 'No VIP'),
         (VIP, 'Want VIP')
     )
 
